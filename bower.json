@@ -1,0 +1,27 @@
+{
+  "name": "partsy-beta",
+  "version": "1.0.0",
+  "homepage": "https://github.com/balofg/partsy-beta",
+  "authors": [
+    "balofg <balofg@live.com>"
+  ],
+  "keywords": [
+    "reddit",
+    "pointless",
+    "art"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "scripts/libs",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.2",
+    "handlebars": "~3.0.0",
+    "jquery": "~2.1.3"
+  }
+}
