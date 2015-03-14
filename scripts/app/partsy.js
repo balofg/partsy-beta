@@ -105,7 +105,7 @@ function partsy_template() {
 	var source = $('script#gallery-template').html();
 	var template = Handlebars.compile(source);
 	var html = template({entries: Partsy.entries});
-	console.log(html);
+
 	$('#gallery').html(html);
 }
 
