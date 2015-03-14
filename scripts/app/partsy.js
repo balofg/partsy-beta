@@ -62,13 +62,20 @@ function partsy_load(reset) {
 				var data = this.data;
 				var entryHtml = $('<div></div>').html(data.selftext_html);
 				entryHtml.html(entryHtml.text()); //decodes html entities
+				var entryDescription = entryHtml.find('p')
+					.clone()
+					.children()
+					.remove()
+					.end()
+					.text(); //found this shit on stackoverflow. thiw way I remove everything that's not text, including the image link
+
 				var imgurLink = entryHtml.find('a').first().attr('href');
 
 				var entry = {
 					reddit: {
 						link: 'http://www.reddit.com' + data.permalink,
 						title: data.title,
-						description: entryHtml.find('p *').not('a').text().substring(0, Partsy.maxchar) + ((data.selftext.length > Partsy.maxchar) ? '...' : ''), //ellipsis
+						description: entryDescription.substring(0, Partsy.maxchar) + ((entryDescription.length > Partsy.maxchar) ? '...' : ''), //ellipsis
 						upvotes: data.ups,
 						comments: data.num_comments,
 						author: data.author,
