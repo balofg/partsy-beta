@@ -11,6 +11,7 @@
 		<script type="text/javascript" src="scripts/libs/jquery/dist/jquery.min.js"></script>
 		<script type="text/javascript" src="scripts/libs/handlebars/handlebars.js"></script>
 		<script type="text/javascript" src="scripts/libs/bootstrap/dist/js/bootstrap.js"></script>
+		<script type="text/javascript" src="scripts/libs/moment/min/moment.min.js"></script>
 		<script type="text/javascript" src="scripts/app/partsy.js"></script>
 	</head>
 	<body class="container">
@@ -25,10 +26,12 @@
 		<div class="row text-center">
 			<h4>Sort by</h4> 
 			<div id="sort" class="btn-group">
-				<button type="button" value="hot" class="btn btn-lg btn-default active">Hot</button>
-				<button type="button" value="new" class="btn btn-lg btn-default">New</button>
+				<button type="button" value="hot" class="btn btn-lg btn-primary active">Hot</button>
+				<button type="button" value="new" class="btn btn-lg btn-primary">New</button>
 			</div>
 		</div>
+		
+		<div class="space"></div>
 
 		<div id="gallery" class="row">
 
@@ -53,6 +56,12 @@
 			</div>
 		</div>
 
+		<div class="space"></div>
+
+		<p class="text-center">&copy; 2015 <a href="http://www.reddit.com/u/balofg">balofg</a></p>
+
+		<div class="space"></div>
+
 		<script type="text/x-handlebars-template" id="gallery-template">
 			{{#each entries}}
 			<div class="col-sm-4">
@@ -67,7 +76,7 @@
 							<span title="Date"><i class="glyphicon glyphicon-time"></i> {{reddit.time}}</span>
 						</p>
 						<p>{{reddit.description}}</p>
-						<p>
+						<p class="text-right">
 							<span title="Comments"><i class="glyphicon glyphicon-comment"></i> {{reddit.comments}}</span>
 							<span title="Upvotes"><i class="glyphicon glyphicon-arrow-up"></i> {{reddit.upvotes}}</span>
 						</p>

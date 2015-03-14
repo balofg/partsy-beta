@@ -3,6 +3,10 @@ body {
 	font-family: Vollkorn;
 }
 
+.space {
+	margin: 25px 0;
+}
+
 #status span {
 	display: none;
 }

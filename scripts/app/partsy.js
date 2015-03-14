@@ -23,8 +23,10 @@ function partsy_buildUrl() {
 }
 
 function partsy_status(status) {
-	$('#status span').toggleClass('active', false);
-	$('#status #' + status).toggleClass('active', true);
+	if (!Partsy.isBusy) {
+		$('#status span').toggleClass('active', false);
+		$('#status #' + status).toggleClass('active', true);
+	}
 }
 
 function partsy_sort(sort) {
@@ -48,7 +50,6 @@ function partsy_load(reset) {
 		partsy_status('loading');
 
 		$.get(partsy_buildUrl(), function (response) {
-			debugger;
 			var count = response.data.children.length;
 			Partsy.count += count;
 			if (count < Partsy.limit) {
@@ -67,9 +68,11 @@ function partsy_load(reset) {
 					reddit: {
 						link: 'http://www.reddit.com' + data.permalink,
 						title: data.title,
-						description: entryHtml.find('p *').not('a').text().substring(0, Partsy.maxchar) + ((data.selftext.length > Partsy.maxchar) ? '...' : '') //ellipsis
+						description: entryHtml.find('p *').not('a').text().substring(0, Partsy.maxchar) + ((data.selftext.length > Partsy.maxchar) ? '...' : ''), //ellipsis
 						upvotes: data.ups,
-						comments: data.num_comments
+						comments: data.num_comments,
+						author: data.author,
+						time: moment(data.created_utc * 1000).fromNow()
 					},
 					imgur: {
 						link: imgurLink,
@@ -82,12 +85,21 @@ function partsy_load(reset) {
 
 			partsy_template();
 			Partsy.isBusy = false;
+
+			if (Partsy.hasMoreData)
+				partsy_status('more');
+			else
+				partsy_status('done');
 		})
 	}
 }
 
 function partsy_template() {
-	//handlebars
+	var source = $('script#gallery-template').html();
+	var template = Handlebars.compile(source);
+	var html = template({entries: Partsy.entries});
+	console.log(html);
+	$('#gallery').html(html);
 }
 
 function partsy_init() {
