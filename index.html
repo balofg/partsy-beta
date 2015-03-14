@@ -1,0 +1,72 @@
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+		<title>Pointless Artsy Photos</title>
+
+		<link type="text/css" rel="stylesheet" href="scripts/libs/bootstrap/dist/css/bootstrap.css" />
+		<link href='http://fonts.googleapis.com/css?family=Vollkorn:400,700,400italic' rel='stylesheet' type='text/css'>
+		<link type="text/css" rel="stylesheet" href="stylesheets/partsy.css" />
+
+		<script type="text/javascript" src="scripts/libs/jquery/dist/jquery.min.js"></script>
+		<script type="text/javascript" src="scripts/libs/handlebars/handlebars.js"></script>
+		<script type="text/javascript" src="scripts/libs/bootstrap/dist/js/bootstrap.js"></script>
+		<script type="text/javascript" src="scripts/app/partsy.js"></script>
+	</head>
+	<body class="container">
+		<h1 class="text-center">
+			<strong class="text-uppercase">Pointless Artsy Photos</strong><br/>
+		</h1>
+
+		<p class="lead text-center text-muted">
+			<em>for pointless storytellers to express their pointless art</em>
+		</p>
+
+		<div id="gallery" class="row">
+
+		</div>
+
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<h3>
+					<span id="status" class="label label-default" style="font-weight: normal;">
+						<span class="active" id="loading">
+							Loading
+							<img src="assets/loader.gif" />
+						</span>
+						<span id="more" style="cursor: pointer;">
+							Load more
+						</span>
+						<span id="done">
+							We're out of pointless
+						</span>
+					</span>
+				</h3>
+			</div>
+		</div>
+
+		<script type="text/x-handlebars-template" id="gallery-template">
+			{{#each entries}}
+			<div class="col-sm-4">
+				<div class="thumbnail">
+					<a href="{{imgur.link}}">
+						<img src="{{imgur.thumbnail}}" alt="{{reddit.title}}" />
+					</a>
+					<div class="caption">
+						<h3 class="info"><strong><a href="{{reddit.link}}">{{reddit.title}}</a></strong></h3>
+						<p>
+							<span title="Author"><i class="glyphicon glyphicon-user"></i> {{reddit.author}}</span><br/>
+							<span title="Date"><i class="glyphicon glyphicon-time"></i> {{reddit.time}}</span>
+						</p>
+						<p>{{reddit.description}}</p>
+						<p>
+							<span title="Comments"><i class="glyphicon glyphicon-comment"></i> {{reddit.comments}}</span>
+							<span title="Upvotes"><i class="glyphicon glyphicon-arrow-up"></i> {{reddit.upvotes}}</span>
+						</p>
+					</div>
+				</div>
+			</div>
+			{{/each}}
+		</script>
+	</body>
+</html>

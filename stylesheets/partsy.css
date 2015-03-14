@@ -1,0 +1,12 @@
+body {
+	background-color: #fafafa;
+	font-family: Vollkorn;
+}
+
+#status span {
+	display: none;
+}
+
+#status span.active {
+	display: inline;
+}
