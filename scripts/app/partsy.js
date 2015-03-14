@@ -68,6 +68,8 @@ function partsy_load(reset) {
 						link: 'http://www.reddit.com' + data.permalink,
 						title: data.title,
 						description: entryHtml.find('p *').not('a').text().substring(0, Partsy.maxchar) + ((data.selftext.length > Partsy.maxchar) ? '...' : '') //ellipsis
+						upvotes: data.ups,
+						comments: data.num_comments
 					},
 					imgur: {
 						link: imgurLink,
